@@ -1,15 +1,26 @@
-import React from "react";
-import ChatForm from "../../components/Chat/ChatForm";
-import ChatHeader from "../../components/Chat/ChatHeader";
-import ChatContent from "../../components/Chat/ChatContent";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import ChatHistory from "./ChatHistory";
+import { getAll } from "../../store/actions/user";
+import DefaultLayout from "../../components/layout/DefaultLayout";
+import SideBar from "./SideBar";
 
-const MainChat = () => {
+const MainChat = ({
+  match: {
+    params: { roomId },
+  },
+}) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAll());
+  }, []);
+
   return (
-    <div className="chat">
-      <ChatHeader />
-      <ChatContent />
-      <ChatForm />
-    </div>
+    <DefaultLayout>
+      <SideBar />
+      <ChatHistory />
+    </DefaultLayout>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SignForm = ({ signUp, login, onSubmit, onChange, error }) => {
   return (
@@ -49,15 +50,13 @@ const SignForm = ({ signUp, login, onSubmit, onChange, error }) => {
           {signUp ? "Sign Up" : "Login"}
         </button>
       </div>
-      {login && (
-        <div className="form-text text-center mb-5 text-dark">
-          Not Registered?{" "}
-          <a href="#" className="text-dark fw-bold">
-            {" "}
-            Create an Account
-          </a>
-        </div>
-      )}
+      <div className="form-text text-center mb-5 text-dark">
+        Not Registered?{" "}
+        <Link to={"/sign-up"} className="text-dark fw-bold">
+          {" "}
+          Create an Account
+        </Link>
+      </div>
     </form>
   );
 };

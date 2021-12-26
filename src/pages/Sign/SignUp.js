@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import SignForm from "../../components/Sign/SignForm";
 import SignLayout from "../../components/Sign/SignLayout";
 
-import services from "../../apis";
+import services from "../../services";
 
 const SignUp = () => {
   const history = useHistory();
@@ -19,7 +19,7 @@ const SignUp = () => {
     e.preventDefault();
     try {
       await services.signUp(signUp.username, signUp.password);
-      history.push("/login");
+      history.push("/");
       console.log("Success");
     } catch (error) {
       setError(error.response.data.message);

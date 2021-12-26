@@ -1,4 +1,4 @@
-import services from "../../apis";
+import services from "../../services";
 import { GET_ALL_USER } from "../../constants";
 
 export const getAll = () => (dispatch) => {

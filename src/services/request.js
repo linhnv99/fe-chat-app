@@ -15,6 +15,9 @@ const credential = {
         if (this.token === '')
             return null;
         return this.token;
+    },
+    removeToken() {
+        localStorage.clear();
     }
 }
 

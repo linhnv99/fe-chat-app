@@ -12,13 +12,10 @@ const login = async (username, password) =>
     password,
   });
 
-const logout = (history) => {
-  localStorage.clear();
-  history.push("/login");
-};
+const getMe = async () => axiosInstance.get("/user/me");
 
 export const authService = {
   signUp,
   login,
-  logout,
+  getMe,
 };
