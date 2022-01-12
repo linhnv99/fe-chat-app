@@ -1,14 +1,16 @@
 import React from "react";
 
-const User = () => {
+const User = ({ name }) => {
   return (
     <div className="row heading">
-      <div className="col-sm-3 col-xs-3 heading-avatar">
+      <div className="col-sm-2 col-xs-2 heading-avatar">
         <div className="heading-avatar-icon">
           <img src="https://bootdey.com/img/Content/avatar/avatar1.png" />
         </div>
       </div>
-      <div className="col-sm-1 col-xs-1  heading-dot  pull-right">
+      <div className="col-7 heading-dot  pull-right user">
+        <p>{name}</p>
+
         <i
           className="fa fa-ellipsis-v fa-2x  pull-right"
           aria-hidden="true"

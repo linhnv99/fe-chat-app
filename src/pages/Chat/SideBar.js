@@ -3,8 +3,10 @@ import SearchBox from "../../components/Chat/SearchBox";
 import SideContainer from "../../components/layout/SideContainer";
 import { useSelector } from "react-redux";
 import ChatItem from "../../components/Chat/ChatItem";
+import UserItem from "../../components/Chat/UserItem";
+import User from "../../components/Chat/User";
 
-const SideBar = () => {
+const SideBar = ({ rooms, onSelectingUser }) => {
   const users = useSelector((state) => state.userReducer.users);
   const [userFilter, setUserFilter] = useState([]);
   const [search, setSearch] = useState("");
@@ -24,12 +26,28 @@ const SideBar = () => {
     setUserFilter(afterFilter);
   }, [users, search]);
 
+  const name = localStorage.getItem("username");
+
   return (
     <SideContainer>
+      <User name={name} />
       <SearchBox search={search} setSearch={setSearch} />
-      {userFilter.length > 0 &&
+      {search &&
+        userFilter.length > 0 &&
         userFilter.map((user, index) => (
-          <ChatItem user={user} key={index} avt={index + 1} />
+          <UserItem
+            user={user}
+            key={index}
+            avt={index + 1}
+            setSearch={setSearch}
+            onSelectingUser={onSelectingUser}
+          />
+        ))}
+      {/* Conversation */}
+      {!search &&
+        rooms.length > 0 &&
+        rooms.map((room, index) => (
+          <ChatItem room={room} key={index} avt={index + 1} />
         ))}
     </SideContainer>
   );

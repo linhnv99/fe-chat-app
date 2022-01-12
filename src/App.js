@@ -30,18 +30,16 @@ const App = () => {
         <Route exact path="/" component={Login} />
         <Route exact path="/sign-up" component={SignUp} />
         <PrivateRoute>
-          <DefaultLayout>
-            <Switch>
-              {routes.map((r) => (
-                <Route
-                  key={r.path}
-                  path={r.path}
-                  exact={r.exact}
-                  component={r.component}
-                />
-              ))}
-            </Switch>
-          </DefaultLayout>
+          <Switch>
+            {routes.map((r) => (
+              <Route
+                key={r.path}
+                path={r.path}
+                exact={r.exact}
+                component={r.component}
+              />
+            ))}
+          </Switch>
         </PrivateRoute>
         <Route path="*">
           <NotFound />

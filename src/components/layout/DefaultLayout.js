@@ -13,7 +13,11 @@ const DefaultLayout = ({ children }) => {
         const me = response.data.data;
         if (!me) setError("unauthorized");
         const meStore = localStorage.getItem("me");
-        if (!meStore) localStorage.setItem("me", me._id);
+        const username = localStorage.getItem("username");
+        if (!meStore && !username) {
+          localStorage.setItem("me", me._id);
+          localStorage.setItem("username", me.username);
+        }
       } catch (error) {
         setError(error.response);
       }
